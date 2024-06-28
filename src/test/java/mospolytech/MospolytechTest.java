@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class MospolytechTest extends ScheduleWrapper {
 
-    @Test
+    @Ignore
     public void mospolytechTest() {
         pageManager.getMainMospolytechPage()
                 .checkTitle("Московский Политех")

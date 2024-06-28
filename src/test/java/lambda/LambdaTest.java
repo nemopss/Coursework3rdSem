@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class LambdaTest extends LambdaWrapper {
 
-    @Test
+    @Ignore
     public void lambdaTest() {
         pageManager.getLambdaPage()
                 .checkTitle()

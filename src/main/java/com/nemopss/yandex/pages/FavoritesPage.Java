@@ -42,7 +42,7 @@ public class FavoritesPage extends BasePage {
                 .getText();
         Assert.assertEquals("Unexpected title", firstProductTitle, title);
         Assert.assertEquals("Unexpected price", firstProductPrice, price);
-        System.out.println("Item " + firstProductTitle + " is located at" + firstProductPrice);
+        System.out.println("✅ Item " + firstProductTitle + " is located at" + firstProductPrice);
         return this;
     }
 
@@ -50,7 +50,7 @@ public class FavoritesPage extends BasePage {
     public FavoritesPage removeFromFavorites() {
         moveToElement(removeFromFavoritesButton);
         removeFromFavoritesButton.click();
-        System.out.println("Deleted from favourites");
+        System.out.println("✅ Deleted from favourites");
         wait.until(ExpectedConditions.visibilityOf(successNotification));
         return this;
     }
@@ -60,11 +60,11 @@ public class FavoritesPage extends BasePage {
         waitUntilElementToBeVisible(successNotification);
         Assert.assertTrue("No pop-up about deletion",
                 successNotification.isDisplayed());
-        System.out.println("Notification popped up");
+        System.out.println("✅ Notification popped up");
         Assert.assertFalse("Item wasn't deleted from favourites",
                 favoriteProduct.stream()
                         .anyMatch(product -> product.getText().contains(firstProductTitle)));
-        System.out.println("Item successfully deleted from favourites");
+        System.out.println("✅ Item successfully deleted from favourites");
         return this;
     }
 
@@ -72,7 +72,7 @@ public class FavoritesPage extends BasePage {
     public FavoritesPage verifyLoginMessage() {
         Assert.assertTrue("No login window",
                 loginMessage.isDisplayed());
-        System.out.println("Login window is presented");
+        System.out.println("✅ Login window is presented");
         return this;
     }
 }

@@ -3,6 +3,7 @@ package yandex;
 import yandex.base.YandexWrapper;
 
 import org.junit.Test;
+import org.junit.Ignore;
 
 public class YandexTest extends YandexWrapper {
 

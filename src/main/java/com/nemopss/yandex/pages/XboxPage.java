@@ -36,7 +36,7 @@ public class XboxPage extends BasePage {
             String name = product.findElement(By.xpath(".//h3")).getText();
             String price = product.findElement(By.xpath(".//span[@data-auto='snippet-price-current']/span[1]"))
                     .getText();
-            System.out.println("Title: " + name + "; Price: " + price);
+            System.out.println("✅ Title: " + name + "; Price: " + price);
         }
         return this;
     }
@@ -47,7 +47,7 @@ public class XboxPage extends BasePage {
         firstProductTitle = firstProduct.findElement(By.xpath(".//h3")).getText();
         firstProductPrice = firstProduct.findElement(By.xpath(".//span[@data-auto='snippet-price-current']/span[1]"))
                 .getText();
-        System.out.println("Remembered title: " + firstProductTitle + "; Price: " + firstProductPrice);
+        System.out.println("✅ Remembered title: " + firstProductTitle + "; Price: " + firstProductPrice);
         return this;
     }
 
@@ -63,7 +63,7 @@ public class XboxPage extends BasePage {
         waitUntilElementToBeVisible(successNotification);
         Assert.assertTrue("No pop-up window",
                 successNotification.isDisplayed());
-        System.out.println("Pop-up is visible");
+        System.out.println("✅ Pop-up is visible");
         return this;
     }
 

@@ -31,7 +31,7 @@ public class MainYandexPage extends BasePage {
     public MainYandexPage checkOpenPage() {
         waitSeconds(15);
         Assert.assertTrue("Page not opened!", link.getAttribute("href").contains("market.yandex"));
-        System.out.println("Page opened!");
+        System.out.println("✅ Page opened!");
         return pageManager.getMainYandexPage();
     }
 
@@ -39,7 +39,7 @@ public class MainYandexPage extends BasePage {
     public MainYandexPage clickOnCatalog() {
         waitUntilElementToBeClickable(catalogButton);
         buttonClick(catalogButton);
-        System.out.println("Catalog is opened");
+        System.out.println("✅ Catalog is opened");
         return this;
     }
 
@@ -49,7 +49,7 @@ public class MainYandexPage extends BasePage {
             waitUntilElementToBeVisible(element);
             moveToElement(element);
             if (element.findElement(By.xpath("./span")).getText().equals(category)) {
-                System.out.println("Moved to '" + category + "'");
+                System.out.println("✅ Moved to '" + category + "'");
                 return this;
             }
         }
@@ -63,7 +63,7 @@ public class MainYandexPage extends BasePage {
             waitUntilElementToBeVisible(element);
             moveToElement(element);
             if (element.getText().equals(subcategory)) {
-                System.out.println("Moved to '" + subcategory + "'");
+                System.out.println("✅ Moved to '" + subcategory + "'");
                 int count = 0;
                 for (WebElement item : menuItemList) {
                     waitUntilElementToBeVisible(item);
@@ -72,7 +72,7 @@ public class MainYandexPage extends BasePage {
                         if (count == 2) {
                             moveToElement(item);
                             buttonClick(item);
-                            System.out.println("Menu item '" + menuItem + "' opened");
+                            System.out.println("✅ Menu item '" + menuItem + "' opened");
                             return pageManager.getXboxPage();
                         }
                     }
