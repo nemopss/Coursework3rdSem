@@ -87,7 +87,7 @@
                     <properties>
                         <property>
                             <name>listener</name>
-                            <value>framework.utils.MyAllureListener</value>
+                            <value>com.nemopss.utils.AllureListener</value>
                         </property>
                     </properties>
                 </configuration>
