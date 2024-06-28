@@ -1,25 +1,25 @@
 package lambda;
 
-import lambda.base.BaseTests;
+import lambda.base.LambdaWrapper;
 import org.junit.Ignore;
 import org.junit.Test;
 
-public class LambdaTest extends BaseTests {
+public class LambdaTest extends LambdaWrapper {
 
     @Test
     public void lambdaTest() {
-        pageManager.getMainLambdaPage()
+        pageManager.getLambdaPage()
                 .checkTitle()
-                .checkRemainingText(5, 5);
+                .checkRemainingCount(5, 5);
         for (int i = 1; i <= 5; i++) {
-            pageManager.getMainLambdaPage()
-                    .checkItem(i)
-                    .clickItem(i);
+            pageManager.getLambdaPage()
+                    .checkItemNotCrossed(i)
+                    .clickItemCheckbox(i);
         }
-        pageManager.getMainLambdaPage()
+        pageManager.getLambdaPage()
                 .createItem()
-                .checkDisplayedItem(6)
-                .checkItem(6)
-                .clickItem(6);
+                .checkItemVisibility(6)
+                .checkItemNotCrossed(6)
+                .clickItemCheckbox(6);
     }
 }

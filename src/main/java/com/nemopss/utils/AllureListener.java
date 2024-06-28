@@ -13,7 +13,8 @@ public class AllureListener extends AllureJunit4 {
 
     @Override
     public void testFailure(Failure failure) {
-        byte[] byteImage = ((TakesScreenshot)DriverManager.getInstance().getDriver()).getScreenshotAs(OutputType.BYTES);
+        byte[] byteImage = ((TakesScreenshot) DriverManager.getInstance().getDriver())
+                .getScreenshotAs(OutputType.BYTES);
         String methodName = failure.getDescription().getMethodName();
 
         LocalDateTime now = LocalDateTime.now();
@@ -23,7 +24,7 @@ public class AllureListener extends AllureJunit4 {
         String testTime = now.format(timeFormatter);
         String fileName = methodName + "_" + testDate + "_" + testTime;
 
-        getLifecycle().addAttachment(fileName,"image/png", "png", byteImage);
+        getLifecycle().addAttachment(fileName, "image/png", "png", byteImage);
         super.testFailure(failure);
     }
 

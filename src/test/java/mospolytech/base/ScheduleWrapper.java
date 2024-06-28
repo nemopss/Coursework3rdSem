@@ -1,4 +1,4 @@
-package lambda.base;
+package mospolytech.base;
 
 import com.nemopss.managers.DriverManager;
 import com.nemopss.managers.InitManager;
@@ -9,8 +9,7 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 
-public class BaseTests {
-
+public class ScheduleWrapper {
     private final DriverManager driverManager = DriverManager.getInstance();
     private final TestPropertiesManager propManager = TestPropertiesManager.getInstance();
     protected PageManager pageManager = PageManager.getInstance();
@@ -23,15 +22,15 @@ public class BaseTests {
     @Before
     public void before() {
         System.out.println("--------------------------");
-        System.out.println("TESTING LambdaSampleApp...");
+        System.out.println("TESTING Mospolytech website...");
         System.out.println("--------------------------");
-        driverManager.getDriver().get(propManager.getProperty(Constants.LAMBDA_URL));
+        driverManager.getDriver().get(propManager.getProperty(Constants.MOSPOLYTECH_URL));
     }
 
     @AfterClass
-    public static void after() {
+    public static void afterClass() {
         System.out.println("--------------------------");
-        System.out.println("END TESTING LambdaSampleApp...");
+        System.out.println("END TESTING Mospolytech website...");
         System.out.println("--------------------------");
         InitManager.quitFramework();
     }

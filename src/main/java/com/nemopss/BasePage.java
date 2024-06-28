@@ -3,6 +3,7 @@ package com.nemopss;
 import com.nemopss.managers.DriverManager;
 import com.nemopss.managers.PageManager;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -12,13 +13,13 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.TextStyle;
 import java.util.*;
-import java.util.NoSuchElementException;
 
 public class BasePage {
 
     protected DriverManager driverManager = DriverManager.getInstance();
     protected PageManager pageManager = PageManager.getInstance();
-    protected WebDriverWait wait = new WebDriverWait(driverManager.getDriver(), Duration.ofSeconds(5), Duration.ofMillis(100));
+    protected WebDriverWait wait = new WebDriverWait(driverManager.getDriver(), Duration.ofSeconds(5),
+            Duration.ofMillis(100));
 
     public BasePage() {
         PageFactory.initElements(driverManager.getDriver(), this);
@@ -42,10 +43,14 @@ public class BasePage {
         javascriptExecutor.executeScript("arguments[0].scrollIntoView(true);", element);
     }
 
+    protected void moveToElement(WebElement element) {
+        Actions action = new Actions(driverManager.getDriver());
+        action.moveToElement(element).build().perform();
+    }
+
     protected void waitUntilElementToBeVisible(WebElement element) {
         wait.until(ExpectedConditions.visibilityOf(element));
     }
-
 
     protected void waitUntilElementToBeClickable(WebElement element) {
         wait.until(ExpectedConditions.elementToBeClickable(element));
@@ -54,17 +59,15 @@ public class BasePage {
     protected void waitSeconds(int seconds) {
         try {
             Thread.sleep(seconds * 1000L);
-        }catch (InterruptedException e) {
+        } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-
 
     }
 
     protected void waitUntilAttributeToBe(WebElement element, String attribute, String value) {
         wait.until(ExpectedConditions.attributeToBe(element, attribute, value));
     }
-
 
     protected void selectLastTab() {
 

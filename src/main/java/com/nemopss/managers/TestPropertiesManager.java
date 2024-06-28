@@ -1,6 +1,5 @@
 package com.nemopss.managers;
 
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
@@ -25,7 +24,8 @@ public class TestPropertiesManager {
 
     private void loadApplicationProperties() {
         try {
-            properties.load(new FileInputStream("src/main/resources/" + System.getProperty("propFile", "application") + ".properties"));
+            properties.load(new FileInputStream(
+                    "src/main/resources/" + System.getProperty("propFile", "application") + ".properties"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -49,5 +49,3 @@ public class TestPropertiesManager {
         return properties.getProperty(key);
     }
 }
-
-

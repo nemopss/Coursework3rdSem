@@ -9,7 +9,7 @@ public class InitManager {
     private static final TestPropertiesManager props = TestPropertiesManager.getInstance();
     private static final DriverManager driverManager = DriverManager.getInstance();
 
-    public static void initFramework(){
+    public static void initFramework() {
         driverManager.getDriver().manage().window().maximize();
         driverManager.getDriver().manage().timeouts()
                 .pageLoadTimeout(Duration.ofSeconds(Integer.parseInt(props.getProperty(PAGE_LOAD_TIMEOUT))));
@@ -17,7 +17,7 @@ public class InitManager {
                 .implicitlyWait(Duration.ofSeconds(Integer.parseInt(props.getProperty(IMPLICITLY_WAIT))));
     }
 
-    public static void quitFramework(){
+    public static void quitFramework() {
         driverManager.quitDriver();
     }
 }

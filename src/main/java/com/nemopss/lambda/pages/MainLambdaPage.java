@@ -31,40 +31,40 @@ public class MainLambdaPage extends BasePage {
 
     @Step("Title comparison")
     public MainLambdaPage checkTitle() {
-        Assert.assertEquals("❌Unequal titles!", "LambdaTest Sample App", pageName.getText());
+        Assert.assertEquals("❌ Unequal titles!", "LambdaTest Sample App", pageName.getText());
         System.out.print(LocalDateTime.now() + " ");
         System.out.println("✅ Titles are equal");
-        return pageManager.getMainLambdaPage();
+        return pageManager.getLambdaPage();
     }
 
     @Step("Remaining text comparison")
-    public MainLambdaPage checkRemainingText(int notEndCounter, int itemCounter) {
-        Assert.assertEquals("❌Text not equal!", notEndCounter + " of " + itemCounter + " remaining",
+    public MainLambdaPage checkRemainingCount(int notEndCounter, int itemCounter) {
+        Assert.assertEquals("❌ Text not equal!", notEndCounter + " of " + itemCounter + " remaining",
                 remainingText.getText());
         System.out.print(LocalDateTime.now().toString() + " ");
         System.out.println("✅ Remaining text is equal");
-        return pageManager.getMainLambdaPage();
+        return pageManager.getLambdaPage();
     }
 
     @Step("'{itemNo}' not crossed check")
-    public MainLambdaPage checkItem(int itemNo) {
+    public MainLambdaPage checkItemNotCrossed(int itemNo) {
         WebElement item = items.get(itemNo - 1);
-        Assert.assertEquals("❌Element crossed!", "done-false", item.getAttribute("class"));
+        Assert.assertEquals("❌ Element crossed!", "done-false", item.getAttribute("class"));
         System.out.print(LocalDateTime.now() + " ");
         System.out.println("✅ Element " + itemNo + " found and not crossed");
-        return pageManager.getMainLambdaPage();
+        return pageManager.getLambdaPage();
     }
 
     @Step("Check box and check crossing of '{itemNo}'")
-    public MainLambdaPage clickItem(int itemNo) {
+    public MainLambdaPage clickItemCheckbox(int itemNo) {
         WebElement item = items.get(itemNo - 1);
         WebElement itemCheckbox = checkboxes.get(itemNo - 1);
         itemCheckbox.click();
-        Assert.assertTrue("❌Element " + itemNo + " not checked!", item.getAttribute("class").equals("done-true"));
+        Assert.assertTrue("❌ Element " + itemNo + " not checked!", item.getAttribute("class").equals("done-true"));
         System.out.print(LocalDateTime.now() + " ");
         System.out.println("✅ Element " + itemNo + " checked");
-        checkRemainingText(items.size() - itemNo, items.size());
-        return pageManager.getMainLambdaPage();
+        checkRemainingCount(items.size() - itemNo, items.size());
+        return pageManager.getLambdaPage();
     }
 
     @Step("New item creation")
@@ -75,16 +75,16 @@ public class MainLambdaPage extends BasePage {
         buttonClick(addButton);
         System.out.print(LocalDateTime.now() + " ");
         System.out.println("✅ Button pressed");
-        return pageManager.getMainLambdaPage();
+        return pageManager.getLambdaPage();
     }
 
     @Step("Element visibility check")
-    public MainLambdaPage checkDisplayedItem(int itemNo) {
+    public MainLambdaPage checkItemVisibility(int itemNo) {
         WebElement item = items.get(itemNo - 1);
-        Assert.assertTrue("❌Element not visible!", item.isDisplayed());
-        Assert.assertEquals("❌Element crossed!", "done-false", item.getAttribute("class"));
+        Assert.assertTrue("❌ Element not visible!", item.isDisplayed());
+        Assert.assertEquals("❌ Element crossed!", "done-false", item.getAttribute("class"));
         System.out.print(LocalDateTime.now() + " ");
         System.out.println("✅ Element 6 created and not crossed");
-        return pageManager.getMainLambdaPage();
+        return pageManager.getLambdaPage();
     }
 }
